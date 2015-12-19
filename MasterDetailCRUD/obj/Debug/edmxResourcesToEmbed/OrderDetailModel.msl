@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OrderManagementModelStoreContainer" CdmEntityContainer="OrderManagementEntities">
+    <EntitySetMapping Name="OrderDetails">
+      <EntityTypeMapping TypeName="OrderManagementModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="Order_Detail_No" ColumnName="Order_Detail_No" />
+          <ScalarProperty Name="Order_No" ColumnName="Order_No" />
+          <ScalarProperty Name="Item_Name" ColumnName="Item_Name" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderMasters">
+      <EntityTypeMapping TypeName="OrderManagementModel.OrderMaster">
+        <MappingFragment StoreEntitySet="OrderMasters">
+          <ScalarProperty Name="Order_No" ColumnName="Order_No" />
+          <ScalarProperty Name="Table_ID" ColumnName="Table_ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Order_DATE" ColumnName="Order_DATE" />
+          <ScalarProperty Name="Waiter_Name" ColumnName="Waiter_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="USP_OrderDetail_Delete" FunctionName="OrderManagementModel.Store.USP_OrderDetail_Delete" />
+    <FunctionImportMapping FunctionImportName="USP_OrderDetail_Insert" FunctionName="OrderManagementModel.Store.USP_OrderDetail_Insert" />
+    <FunctionImportMapping FunctionImportName="USP_OrderDetail_Select" FunctionName="OrderManagementModel.Store.USP_OrderDetail_Select">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OrderManagementModel.USP_OrderDetail_Select_Result">
+          <ScalarProperty Name="Order_Detail_No" ColumnName="Order_Detail_No" />
+          <ScalarProperty Name="Order_No" ColumnName="Order_No" />
+          <ScalarProperty Name="Item_Name" ColumnName="Item_Name" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_OrderDetail_Update" FunctionName="OrderManagementModel.Store.USP_OrderDetail_Update" />
+    <FunctionImportMapping FunctionImportName="USP_OrderMaster_Delete" FunctionName="OrderManagementModel.Store.USP_OrderMaster_Delete" />
+    <FunctionImportMapping FunctionImportName="USP_OrderMaster_Insert" FunctionName="OrderManagementModel.Store.USP_OrderMaster_Insert" />
+    <FunctionImportMapping FunctionImportName="USP_OrderMaster_Select" FunctionName="OrderManagementModel.Store.USP_OrderMaster_Select">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="OrderManagementModel.USP_OrderMaster_Select_Result">
+          <ScalarProperty Name="Order_No" ColumnName="Order_No" />
+          <ScalarProperty Name="Table_ID" ColumnName="Table_ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Order_DATE" ColumnName="Order_DATE" />
+          <ScalarProperty Name="Waiter_Name" ColumnName="Waiter_Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_OrderMaster_Update" FunctionName="OrderManagementModel.Store.USP_OrderMaster_Update" />
+  </EntityContainerMapping>
+</Mapping>

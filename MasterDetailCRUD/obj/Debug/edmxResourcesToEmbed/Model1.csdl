@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OrderManagementModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="Order_Detail_No" />
+    </Key>
+    <Property Name="Order_Detail_No" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Order_No" Type="Int32" />
+    <Property Name="Item_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Notes" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="QTY" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderMaster">
+    <Key>
+      <PropertyRef Name="Order_No" />
+    </Key>
+    <Property Name="Order_No" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Table_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Order_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Waiter_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="OrderManagementEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+    <EntitySet Name="OrderMasters" EntityType="Self.OrderMaster" />
+    <FunctionImport Name="USP_OrderDetail_Delete" ReturnType="Collection(String)">
+      <Parameter Name="Order_Detail_No" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_OrderDetail_Insert" ReturnType="Collection(String)">
+      <Parameter Name="Order_No" Mode="In" Type="String" />
+      <Parameter Name="Item_Name" Mode="In" Type="String" />
+      <Parameter Name="Notes" Mode="In" Type="String" />
+      <Parameter Name="QTY" Mode="In" Type="String" />
+      <Parameter Name="Price" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_OrderDetail_Select" ReturnType="Collection(OrderManagementModel1.USP_OrderDetail_Select_Result)">
+      <Parameter Name="OrderNo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_OrderDetail_Update" ReturnType="Collection(String)">
+      <Parameter Name="Order_Detail_No" Mode="In" Type="Int32" />
+      <Parameter Name="Order_No" Mode="In" Type="String" />
+      <Parameter Name="Item_Name" Mode="In" Type="String" />
+      <Parameter Name="Notes" Mode="In" Type="String" />
+      <Parameter Name="QTY" Mode="In" Type="String" />
+      <Parameter Name="Price" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_OrderMaster_Delete" ReturnType="Collection(String)">
+      <Parameter Name="OrderNo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_OrderMaster_Insert" ReturnType="Collection(String)">
+      <Parameter Name="Table_ID" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Waiter_Name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_OrderMaster_Select" ReturnType="Collection(OrderManagementModel1.USP_OrderMaster_Select_Result)">
+      <Parameter Name="OrderNo" Mode="In" Type="String" />
+      <Parameter Name="Table_ID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_OrderMaster_Update" ReturnType="Collection(String)">
+      <Parameter Name="OrderNo" Mode="In" Type="Int32" />
+      <Parameter Name="Table_ID" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Waiter_Name" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="USP_OrderDetail_Select_Result">
+    <Property Type="Int32" Name="Order_Detail_No" Nullable="false" />
+    <Property Type="Int32" Name="Order_No" Nullable="true" />
+    <Property Type="String" Name="Item_Name" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Notes" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="QTY" Nullable="false" />
+    <Property Type="Int32" Name="Price" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_OrderMaster_Select_Result">
+    <Property Type="Int32" Name="Order_No" Nullable="false" />
+    <Property Type="String" Name="Table_ID" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="200" />
+    <Property Type="DateTime" Name="Order_DATE" Nullable="false" Precision="23" />
+    <Property Type="String" Name="Waiter_Name" Nullable="false" MaxLength="20" />
+  </ComplexType>
+</Schema>
